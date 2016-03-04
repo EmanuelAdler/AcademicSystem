@@ -11,6 +11,7 @@ public class Publication {
 	protected String project;
 	protected boolean isProject;
 	
+	//THIS CONSTRUCTOR IS CALLED WHEN THERE IS A PROJECT TO BE ADDED
 	public Publication(ArrayList<User> authors, String title, String conference, int year, String project) {
 		super();
 		this.authors = authors;
@@ -21,6 +22,7 @@ public class Publication {
 		this.isProject = true;
 	}
 	
+	//THIS CONSTRUCTOR IS CALLED WHEN THERE ISN'T A PROJECT
 	public Publication(ArrayList<User> authors, String title, String conference, int year) {
 		super();
 		this.authors = authors;
