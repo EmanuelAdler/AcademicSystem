@@ -5,7 +5,7 @@ import users.*;
 
 public class Main {
 	public static void main(String[] args) {
-		//ArrayList<User> 
+		
 		Professor baldoino = new Professor("Baldoino", "baldoino@ic.ufal.br");
 		Project projeto1 = new Project("Projeto1", "Esse é o objetivo", "Essa é a descrição", "Baldoino", "BlackBerry", 2000.00, "04/03", "04/05", false, "em elaboração");
 		Student andre = new Student("André", "andre@ic.ufal.br", "Baldoino", "graduação");
