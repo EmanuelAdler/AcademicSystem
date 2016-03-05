@@ -56,7 +56,7 @@ public class Main {
 			createPublication();
 		else if(option == 4)
 			consultation();
-		
+		sc.close();
 		/*
 		//consulta por colaborador
 		utility.consultCollaborator(user, "Baldoino");
@@ -82,6 +82,7 @@ public class Main {
 		else if(option == 2){
 			newUser = createStudent();
 		}
+		sc.close();
 		return newUser;
 	}
 	public static Professor createProfessor(){
@@ -94,6 +95,7 @@ public class Main {
 		String email = sc.nextLine();
 		newProfessor.setName(name);
 		newProfessor.setEmail(email);
+		sc.close();
 		return newProfessor;
 	}
 	public static Student createStudent(){
@@ -119,6 +121,7 @@ public class Main {
 			newUser.setType("doutorado");
 			newUser = createStudentGeneral(newUser);
 		}
+		sc.close();
 		return newUser;
 		
 	}
@@ -131,6 +134,7 @@ public class Main {
 		String email = sc.nextLine();
 		newUser.setName(name);
 		newUser.setEmail(email);
+		sc.close();
 		return newUser;
 		
 	}
@@ -152,7 +156,7 @@ public class Main {
 			addUserToProject();
 		else if(option == 3)
 			addPublicationToProject();
-		
+		sc.close();
 		return newProject;
 	}
 	public static void createPublication(){
@@ -166,6 +170,7 @@ public class Main {
 			contributors();
 		else if(option == 2)
 			projects();
+		sc.close();
 	}
 	public static Project createProject(){
 		Project newProject = new Project(null, null, null, null, 0.0, null, null, false, null);
@@ -195,7 +200,7 @@ public class Main {
 		newProject.setEndDate(endDate);
 		newProject.setDone(false);
 		newProject.setStatus("em elaboracao");
-		
+		sc.close();
 		return newProject;
 		
 	}

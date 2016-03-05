@@ -5,10 +5,9 @@ public class Student extends User{
 	protected String type;
 	
 	
-	public Student(String name, String email, String guideProfessor, String type){
+	public Student(String name, String email, String guideProfessor){
 		super(name, email);
 		this.guideProfessor = guideProfessor;
-		this.type = type;
 	}
 	
 	

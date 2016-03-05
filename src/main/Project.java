@@ -1,4 +1,6 @@
 package main;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import users.*;
 import publications.Publication;
@@ -127,14 +129,26 @@ public class Project {
 	public Date getStartDate() {
 		return startDate;
 	}
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
+	public void setStartDate(String startDate) {
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/mm/yyyy");
+		try {
+			Date date = formatter.parse(startDate);
+			this.startDate = date;
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 	}
 	public Date getEndDate() {
 		return endDate;
 	}
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
+	public void setEndDate(String endDate) {
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/mm/yyyy");
+		try {
+			Date date = formatter.parse(endDate);
+			this.endDate = date;
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 	}
 	public ArrayList<User> getTeam() {
 		return team;
