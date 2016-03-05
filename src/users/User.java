@@ -14,6 +14,7 @@ public class User {
 		this.name = name;
 		this.email = email;
 		this.projects = new ArrayList<Project>();
+		this.publications = new ArrayList<Publication>();
 	}
 	
 	public String getName() {

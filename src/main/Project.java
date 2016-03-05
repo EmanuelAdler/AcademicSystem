@@ -31,6 +31,7 @@ public class Project {
 		this.endDate = endDate;
 		this.status = status;
 		this.team = new ArrayList<User>();
+		this.publications = new ArrayList<Publication>();
 	}
 	
 	public void allocateUser(User newUser){
