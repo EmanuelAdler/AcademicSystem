@@ -6,6 +6,7 @@ import users.*;
 public class Utilities {
 
 	public void consultCollaborator(ArrayList<User> user, String collaborator){
+		boolean flag = false;
 		for(int aux = 0; aux < user.size() ; aux++)
 		{
 			if(user.get(aux).getName().equals(collaborator))
@@ -25,11 +26,16 @@ public class Utilities {
 					System.out.println("Nenhuma");
 				}
 				System.out.println("\n\n\n\n");
+				flag = true;
 			}
+		}
+		if(!flag){
+			System.out.println("Colaborador não encontrado");
 		}
 	}	
 
 	public void consultProject(ArrayList<Project> project, String projectName){
+		boolean flag = false;
 		for(int aux = 0; aux < project.size() ; aux++)
 		{
 			if(project.get(aux).getTitle().equals(projectName))
@@ -49,7 +55,11 @@ public class Utilities {
 					System.out.println("Nenhuma");
 				}
 				System.out.println("\n\n\n\n");
+				flag = true;
 			}
+		}
+		if(!flag){
+			System.out.println("Projeto não encontrado");
 		}
 	}
 }
