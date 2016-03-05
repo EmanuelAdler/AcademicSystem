@@ -1,13 +1,14 @@
 package users;
 
 import main.Project;
+import publications.Publication;
 import java.util.ArrayList;
 
 public class User {
 	protected String name;
 	protected String email;
 	protected ArrayList<Project> projects;
-	
+	protected ArrayList<Publication> publications;
 	
 	public User(String name, String email){
 		this.name = name;
@@ -32,6 +33,16 @@ public class User {
 	}
 	public void setProjects(Project newProject) {
 		this.projects.add(newProject);
+	}
+	public ArrayList<Publication> getPublication() {
+		return publications;
+	}
+	public void setPublication(Publication newPublication) {
+		this.publications.add(newPublication);
+	}
+	public String toString()
+	{
+		return name;
 	}
 	
 	

@@ -68,6 +68,9 @@ public class Publication {
 	public void setIsProject(boolean isProject) {
 		this.isProject = isProject;
 	}
-	
+	public String toString()
+	{
+		return title;
+	}
 
 }

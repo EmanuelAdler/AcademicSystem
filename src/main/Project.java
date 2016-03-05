@@ -1,7 +1,7 @@
 package main;
 import java.util.ArrayList;
-
 import users.*;
+import publications.Publication;
 
 public class Project {
 	protected String title;
@@ -15,7 +15,8 @@ public class Project {
 	protected ArrayList<User> team;
 	protected boolean isDone;
 	protected String status;
-	
+	protected ArrayList<Publication> publications;
+
 	
 	
 	public Project(String title, String objective, String description, String fundingAgency, Double financedAmount, String startDate, String endDate, boolean isDone, String status){
@@ -150,6 +151,14 @@ public class Project {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	
-	
+	public ArrayList<User> getUsers() {
+		return team;
+	}
+	public String toString()
+	{
+		return title;
+	}
+	public ArrayList<Publication> getPublications() {
+		return publications;
+	}
 }
