@@ -8,7 +8,6 @@ import users.*;
 public class Main {
 	public static void main(String[] args) {
 		
-		int aux;
 		ArrayList<User> user = new ArrayList<User>();
 		ArrayList<Project> project = new ArrayList<Project>();
 		ArrayList<Publication> publication = new ArrayList<Publication>();
@@ -33,7 +32,7 @@ public class Main {
 		baldoino.setProjects(projeto2);
 		
 		//consulta por colaborador
-		for(aux = 0; aux < user.size() ; aux++)
+		for(int aux = 0; aux < user.size() ; aux++)
 		{
 			if(user.get(aux).getName().equals("Baldoino"))
 			{
@@ -42,7 +41,7 @@ public class Main {
 			}
 		}
 		//consulta por projeto	
-		for(aux = 0; aux < project.size(); aux++)
+		for(int aux = 0; aux < project.size(); aux++)
 		{
 			if(project.get(aux).getTitle().equals("Projeto2"))
 			{
