@@ -15,11 +15,11 @@ public class Main {
 		ArrayList<Publication> publication = new ArrayList<Publication>();
 		Utilities utility = new Utilities();
 		
-		System.out.println("--- Sistema de Gestão de Produtividade Acadêmica ---");
-		System.out.println("Escolha uma opção:");
-		System.out.println("1. Criar usuário");
+		System.out.println("--- Sistema de Gestao de Produtividade Academica ---");
+		System.out.println("Escolha uma opcao:");
+		System.out.println("1. Criar usuario");
 		System.out.println("2. Projetos");
-		System.out.println("3. Criar publicação");
+		System.out.println("3. Criar publicacao");
 		System.out.println("4. Consultas");
 		
 		Scanner sc = new Scanner(System.in);
@@ -31,8 +31,9 @@ public class Main {
 		}
 		else if(option == 2)
 			projectList = projectsMenu(projectList);
-		else if(option == 3)
+		else if(option == 3){
 			Publication newPublication = createPublication();
+		}
 		else if(option == 4)
 			consultation(projectList, userList, utility);
 		
@@ -46,8 +47,8 @@ public class Main {
 	}
 	
 	public static User userCreate(){
-		System.out.println("--- Sistema de Gestão de Produtividade Acadêmica ---");
-		System.out.println("Escolha o tipo de usuário");
+		System.out.println("--- Sistema de Gestao de Produtividade Academica ---");
+		System.out.println("Escolha o tipo de usuario");
 		System.out.println("1. Professor");
 		System.out.println("2. Estudante");
 		
@@ -66,7 +67,7 @@ public class Main {
 	}
 	public static Professor createProfessor(){
 		Professor newProfessor = new Professor(null, null);
-		System.out.println("--- Sistema de Gestão de Produtividade Acadêmica ---");
+		System.out.println("--- Sistema de Gestao de Produtividade Academica ---");
 		System.out.println("Nome:");
 		Scanner sc = new Scanner(System.in);
 		String name = sc.nextLine();
@@ -79,9 +80,9 @@ public class Main {
 	}
 	public static Student createStudent(){
 		Student newUser = new Student(null, null, null);
-		System.out.println("--- Sistema de Gestão de Produtividade Acadêmica ---");
+		System.out.println("--- Sistema de Gestao de Produtividade Academica ---");
 		System.out.println("Escolha o tipo de estudante");
-		System.out.println("1. Graduação");
+		System.out.println("1. Graduacao");
 		System.out.println("2. Mestrado");
 		System.out.println("3. Doutorado");
 		
@@ -105,7 +106,7 @@ public class Main {
 		
 	}
 	public static Student createStudentGeneral(Student newUser){
-		System.out.println("--- Sistema de Gestão de Produtividade Acadêmica ---");
+		System.out.println("--- Sistema de Gestao de Produtividade Academica ---");
 		System.out.println("Nome:");
 		Scanner sc = new Scanner(System.in);
 		String name = sc.nextLine();
@@ -118,11 +119,11 @@ public class Main {
 		
 	}
 	public static ArrayList<Project> projectsMenu(ArrayList<Project> projectList){
-		System.out.println("--- Sistema de Gestão de Produtividade Acadêmica ---");
-		System.out.println("Escolha uma opção:");
+		System.out.println("--- Sistema de Gestao de Produtividade Academica ---");
+		System.out.println("Escolha uma opcao:");
 		System.out.println("1. Criar projeto");
-		System.out.println("2. Adicionar usuário a um projeto");
-		System.out.println("3. Adicionar publicação a um projeto");
+		System.out.println("2. Adicionar usuario a um projeto");
+		System.out.println("3. Adicionar publicacao a um projeto");
 		
 		Project newProject = new Project(null, null, null, null, 0.0, null, null, false, null);
 		
@@ -142,22 +143,22 @@ public class Main {
 	}
 	public static Publication createPublication(){
 		ArrayList<User> authorsList = new ArrayList<User>();
-		System.out.println("--- Sistema de Gestão de Produtividade Acadêmica ---");
-		System.out.println("Criação de Publicação");
-		System.out.println("Título:");
+		System.out.println("--- Sistema de Gestao de Produtividade Academica ---");
+		System.out.println("Criacao de Publicacao");
+		System.out.println("Titulo:");
 		Scanner sc = new Scanner(System.in);
 		String title = sc.nextLine();
-		System.out.println("Conferência");
+		System.out.println("Conferencia");
 		String conference = sc.nextLine();
 		System.out.println("Ano:");
 		int year = sc.nextInt();
-		Publication newPublication = new Publication(authorsList, title, conference, year);
+		Publication newPublication = new Publication(authorsList, title, conference, year, "");
 		
 		return newPublication;
 	}
 	public static void consultation(ArrayList<Project> projectList, ArrayList<User> userList, Utilities utility){
-		System.out.println("--- Sistema de Gestão de Produtividade Acadêmica ---");
-		System.out.println("Escolha uma opção:");
+		System.out.println("--- Sistema de Gestao de Produtividade Academica ---");
+		System.out.println("Escolha uma opcao:");
 		System.out.println("1. Consulta por colaborador");
 		System.out.println("2. Consulta por projeto");
 		Scanner sc = new Scanner(System.in);
@@ -171,21 +172,21 @@ public class Main {
 	}
 	public static Project createProject(){
 		Project newProject = new Project(null, null, null, null, 0.0, null, null, false, null);
-		System.out.println("--- Sistema de Gestão de Produtividade Acadêmica ---");
-		System.out.println("Título:");
+		System.out.println("--- Sistema de Gestao de Produtividade Academica ---");
+		System.out.println("Titulo:");
 		Scanner sc = new Scanner(System.in);
 		String title = sc.nextLine();
 		System.out.println("Objetivo:");
 		String objective = sc.nextLine();
-		System.out.println("Descrição:");
+		System.out.println("Descricao:");
 		String description = sc.nextLine();
-		System.out.println("Agência financiadora:");
+		System.out.println("Agencia financiadora:");
 		String fundingAgency = sc.nextLine();
 		System.out.println("Valor financiado:");
 		double financedAmount = sc.nextDouble();
-		System.out.println("Data de início:");
+		System.out.println("Data de inicio:");
 		String startDate = sc.nextLine();
-		System.out.println("Data de término:");
+		System.out.println("Data de termino:");
 		String endDate = sc.nextLine();
 		
 		newProject.setTitle(title);
@@ -208,15 +209,15 @@ public class Main {
 		
 	}
 	public static void contributors(ArrayList<User> userList, Utilities utility){
-		System.out.println("--- Sistema de Gestão de Produtividade Acadêmica ---");
+		System.out.println("--- Sistema de Gestao de Produtividade Academica ---");
 		System.out.println("Digite o nome do colaborador:");
 		Scanner sc = new Scanner(System.in);
 		String collaboratorName = sc.nextLine();
 		utility.consultCollaborator(userList, collaboratorName);
 	}
 	public static void projects(ArrayList<Project> projectList, Utilities utility){
-		System.out.println("--- Sistema de Gestão de Produtividade Acadêmica ---");
-		System.out.println("Digite o título do projeto:");
+		System.out.println("--- Sistema de Gestao de Produtividade Academica ---");
+		System.out.println("Digite o titulo do projeto:");
 		Scanner sc = new Scanner(System.in);
 		String projectName = sc.nextLine();
 		utility.consultProject(projectList, projectName);
