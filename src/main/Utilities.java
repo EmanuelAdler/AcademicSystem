@@ -25,12 +25,12 @@ public class Utilities {
 				else{
 					System.out.println("Nenhuma");
 				}
-				System.out.println("\n\n\n\n");
+				System.out.println("\n");
 				flag = true;
 			}
 		}
 		if(!flag){
-			System.out.println("Colaborador não encontrado");
+			System.out.println("Colaborador nao encontrado");
 		}
 	}	
 
@@ -54,12 +54,12 @@ public class Utilities {
 				else{
 					System.out.println("Nenhuma");
 				}
-				System.out.println("\n\n\n\n");
+				System.out.println("\n");
 				flag = true;
 			}
 		}
 		if(!flag){
-			System.out.println("Projeto não encontrado");
+			System.out.println("Projeto nao encontrado");
 		}
 	}
 }

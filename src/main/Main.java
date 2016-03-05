@@ -7,13 +7,13 @@ import users.*;
 import java.util.Scanner;
 
 public class Main {
-
+	static ArrayList<User> userList = new ArrayList<User>();
+	static ArrayList<Project> projectList = new ArrayList<Project>();
+	static ArrayList<Publication> publication = new ArrayList<Publication>();
+	static Utilities utility = new Utilities();
+	
 	public static void main(String[] args) {
 		
-		ArrayList<User> userList = new ArrayList<User>();
-		ArrayList<Project> projectList = new ArrayList<Project>();
-		ArrayList<Publication> publication = new ArrayList<Publication>();
-		Utilities utility = new Utilities();
 		
 		System.out.println("--- Sistema de Gestao de Produtividade Academica ---");
 		System.out.println("Escolha uma opcao:");
@@ -28,21 +28,20 @@ public class Main {
 		if(option == 1){
 			User newUser = userCreate();
 			userList.add(newUser);
+			main(args);
 		}
-		else if(option == 2)
+		else if(option == 2){
 			projectList = projectsMenu(projectList);
+			main(args);
+		}
 		else if(option == 3){
 			Publication newPublication = createPublication();
+			main(args);
 		}
-		else if(option == 4)
+		else if(option == 4){
 			consultation(projectList, userList, utility);
-		
-		/*
-		//consulta por colaborador
-		utility.consultCollaborator(user, "Baldoino");
-		//consulta por projeto	
-		utility.consultProject(project, "Projeto2");
-		*/
+			main(args);
+		}
 		
 	}
 	
