@@ -2,6 +2,7 @@ package main;
 import java.util.ArrayList;
 import users.*;
 import publications.Publication;
+import java.util.Date;
 
 public class Project {
 	protected String title;
@@ -10,8 +11,8 @@ public class Project {
 	protected ArrayList<String> professorList;
 	protected String fundingAgency;
 	protected Double financedAmount;
-	protected String startDate;
-	protected String endDate;
+	protected Date startDate;
+	protected Date endDate;
 	protected ArrayList<User> team;
 	protected boolean isDone;
 	protected String status;
@@ -19,7 +20,7 @@ public class Project {
 
 	
 	
-	public Project(String title, String objective, String description, String fundingAgency, Double financedAmount, String startDate, String endDate, boolean isDone, String status){
+	public Project(String title, String objective, String description, String fundingAgency, Double financedAmount, Date startDate, Date endDate, boolean isDone, String status){
 		this.title = title;
 		this.objective = objective;
 		this.description = description;
@@ -123,16 +124,16 @@ public class Project {
 	public void setFinancedAmount(Double financedAmount) {
 		this.financedAmount = financedAmount;
 	}
-	public String getStartDate() {
+	public Date getStartDate() {
 		return startDate;
 	}
-	public void setStartDate(String startDate) {
+	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
-	public String getEndDate() {
+	public Date getEndDate() {
 		return endDate;
 	}
-	public void setEndDate(String endDate) {
+	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
 	public ArrayList<User> getTeam() {
