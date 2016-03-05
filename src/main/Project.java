@@ -64,12 +64,13 @@ public class Project {
 								 * Um estudante não pode estar em mais de dois projetos "em andamento"
 								 */
 								int quantity = 0;
-								for(i = 0; i < newUser.getProjects().size(); i++){
-									if(newUser.getProjects().get(i).getStatus() == "em andamento"){
+								int j = 0;
+								for(j = 0; j < newUser.getProjects().size(); j++){
+									if(newUser.getProjects().get(j).getStatus() == "em andamento"){
 										quantity++;
 										if(quantity == 2)
 											System.out.println("Este aluno não pode participar deste projeto");
-										else if(quantity < 2 && i == newUser.getProjects().size()-1)
+										else if(quantity < 2 && j == newUser.getProjects().size()-1)
 											this.team.add(newUser);
 									}
 									else{
