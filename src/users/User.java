@@ -32,14 +32,8 @@ public class User {
 	public ArrayList<Project> getProjects() {
 		return projects;
 	}
-	public void setProjects(Project newProject) {
-		this.projects.add(newProject);
-	}
 	public ArrayList<Publication> getPublication() {
 		return publications;
-	}
-	public void setPublication(Publication newPublication) {
-		this.publications.add(newPublication);
 	}
 	public String toString()
 	{

@@ -38,42 +38,42 @@ public class Project {
 	}
 	
 	public void allocateUser(User newUser){
-		if(this.status != "em andamento"){
+		if(this.status.equalsIgnoreCase("em andamento")){
 			if(newUser instanceof Professor){
 				if(this.team.size() == 0){
 					/*
 					 * Um projeto precisa de no minimo um professor.
-					 * Verifica se o novo usuário é um professor.
+					 * Verifica se o novo usuï¿½rio ï¿½ um professor.
 					 */
 					if(newUser instanceof Professor){
 						this.team.add(newUser);
 						this.professorList.add(newUser.getName());
 					}
 					else{
-						System.out.println("Este projeto não possui um professor cadastrado");
+						System.out.println("Este projeto nao possui um professor cadastrado");
 					}
 				}
 				else{
 					/*
-					 * Verifica se o usuário já está no projeto.
+					 * Verifica se o usuï¿½rio jï¿½ estï¿½ no projeto.
 					 */
 					for(int i = 0; i < this.team.size(); i++){
-						if(this.team.get(i) == newUser){
-							System.out.println("Este usuário já está no projeto");
+						if(this.team.get(i).equals(newUser)){
+							System.out.println("Este usuario ja esta no projeto");
 							break;
 						}
-						else if(this.team.get(i) != newUser && i == this.team.size()-1){
+						else if(this.team.get(i).equals(newUser) && i == this.team.size()-1){
 							if(newUser instanceof Student){
 								/*
-								 * Um estudante não pode estar em mais de dois projetos "em andamento"
+								 * Um estudante nï¿½o pode estar em mais de dois projetos "em andamento"
 								 */
 								int quantity = 0;
 								int j = 0;
 								for(j = 0; j < newUser.getProjects().size(); j++){
-									if(newUser.getProjects().get(j).getStatus() == "em andamento"){
+									if(newUser.getProjects().get(j).getStatus().equalsIgnoreCase("em andamento")){
 										quantity++;
 										if(quantity == 2)
-											System.out.println("Este aluno não pode participar deste projeto");
+											System.out.println("Este aluno nao pode participar deste projeto");
 										else if(quantity < 2 && j == newUser.getProjects().size()-1)
 											this.team.add(newUser);
 									}
@@ -89,7 +89,7 @@ public class Project {
 			}
 		}
 		else
-			System.out.println("Este projeto já está em andamento");
+			System.out.println("Este projeto ja esta em andamento");
 	}
 	
 	

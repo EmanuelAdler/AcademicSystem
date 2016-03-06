@@ -9,11 +9,10 @@ import java.util.Scanner;
 public class Main {
 	static ArrayList<User> userList = new ArrayList<User>();
 	static ArrayList<Project> projectList = new ArrayList<Project>();
-	static ArrayList<Publication> publication = new ArrayList<Publication>();
+	static ArrayList<Publication> publicationList = new ArrayList<Publication>();
 	static Utilities utility = new Utilities();
 	
 	public static void main(String[] args) {
-		
 		
 		System.out.println("--- Sistema de Gestao de Produtividade Academica ---");
 		System.out.println("Escolha uma opcao:");
@@ -21,6 +20,7 @@ public class Main {
 		System.out.println("2. Projetos");
 		System.out.println("3. Criar publicacao");
 		System.out.println("4. Consultas");
+		System.out.println("5. Sair");
 		
 		Scanner sc = new Scanner(System.in);
 		int option = sc.nextInt();
@@ -32,6 +32,8 @@ public class Main {
 		}
 		else if(option == 2){
 			projectList = projectsMenu(projectList);
+			if(projectList.get(0).getUsers().size() > 0)
+			projectList.get(0).getUsers().get(0).getName();
 			main(args);
 		}
 		else if(option == 3){
@@ -42,6 +44,9 @@ public class Main {
 			consultation(projectList, userList, utility);
 			main(args);
 		}
+		else if(option == 5)
+			System.exit(0);
+		
 		
 	}
 	
@@ -74,7 +79,7 @@ public class Main {
 		String email = sc.nextLine();
 		newProfessor.setName(name);
 		newProfessor.setEmail(email);
-		
+		userList.add(newProfessor);
 		return newProfessor;
 	}
 	public static Student createStudent(){
@@ -91,14 +96,17 @@ public class Main {
 		if(option == 1){
 			newUser.setType("graduacao");
 			newUser = createStudentGeneral(newUser);
+			userList.add(newUser);
 		}
 		else if(option == 2){
 			newUser.setType("mestrado");
 			newUser = createStudentGeneral(newUser);
+			userList.add(newUser);
 		}
 		else if(option == 3){
 			newUser.setType("doutorado");
 			newUser = createStudentGeneral(newUser);
+			userList.add(newUser);
 		}
 		
 		return newUser;
@@ -133,10 +141,22 @@ public class Main {
 			newProject = createProject();
 			projectList.add(newProject);
 		}
-		else if(option == 2)
-			addUserToProject(projectList);
-		else if(option == 3)
-			addPublicationToProject(projectList);
+		else if(option == 2){
+			String aux = sc.nextLine();
+			System.out.println("Insira o nome do projeto");
+			String projectName = sc.nextLine();
+			System.out.println("Insira o nome do usuário");
+			String userName = sc.nextLine();
+			projectList = addUserToProject(projectList, userList, projectName, userName);
+		}
+		else if(option == 3){
+			String aux = sc.nextLine();
+			System.out.println("Insira o nome do projeto");
+			String projectName = sc.nextLine();
+			System.out.println("Insira o titulo da publicacao");
+			String publicationName = sc.nextLine();
+			//projectList = addPublicationToProject(projectList, publicationName, projectName);
+		}
 		
 		return projectList;
 	}
@@ -181,12 +201,12 @@ public class Main {
 		String description = sc.nextLine();
 		System.out.println("Agencia financiadora:");
 		String fundingAgency = sc.nextLine();
-		System.out.println("Valor financiado:");
-		double financedAmount = sc.nextDouble();
 		System.out.println("Data de inicio:");
 		String startDate = sc.nextLine();
 		System.out.println("Data de termino:");
 		String endDate = sc.nextLine();
+		System.out.println("Valor financiado:");
+		double financedAmount = sc.nextDouble();
 		
 		newProject.setTitle(title);
 		newProject.setObjective(objective);
@@ -201,12 +221,25 @@ public class Main {
 		return newProject;
 		
 	}
-	public static void addUserToProject(ArrayList<Project> projectlist){
-		
+	public static ArrayList<Project> addUserToProject(ArrayList<Project> projectList, ArrayList<User> userList, String projectName, String userName){
+		for(int i = 0; i < userList.size(); i++){
+			System.out.println(userList.get(i).getName());
+			if(userList.get(i).getName().equalsIgnoreCase(userName)){
+				for(int j = 0; j < projectList.size(); j++){
+					if(projectList.get(j).getTitle().equalsIgnoreCase(projectName)){
+						projectList.get(j).allocateUser(userList.get(i));
+						return projectList;
+					}
+				}
+			}
+		}
+		return projectList;
 	}
-	public static void addPublicationToProject(ArrayList<Project> projectList){
+	/*public static ArrayList<Project> addPublicationToProject(ArrayList<Project> projectList, String publicationTitle, String projectName){
 		
-	}
+		return projectList;
+		
+	}*/
 	public static void contributors(ArrayList<User> userList, Utilities utility){
 		System.out.println("--- Sistema de Gestao de Produtividade Academica ---");
 		System.out.println("Digite o nome do colaborador:");
