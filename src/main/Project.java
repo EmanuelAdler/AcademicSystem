@@ -178,4 +178,8 @@ public class Project {
 	public ArrayList<Publication> getPublications() {
 		return publications;
 	}
+
+	public void setPublications(Publication publication) {
+		this.publications.add(publication);
+	}
 }

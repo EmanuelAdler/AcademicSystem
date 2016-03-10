@@ -1,5 +1,7 @@
 package main;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
+
 import main.Project;
 import main.Utilities;
 import publications.Publication;
@@ -23,34 +25,43 @@ public class Main {
 		System.out.println("5. Sair");
 		
 		Scanner sc = new Scanner(System.in);
-		int option = sc.nextInt();
-		
-		if(option == 1){
-			User newUser = userCreate();
-			userList.add(newUser);
-			main(args);
+		try{
+			int option = sc.nextInt();
+			
+			if(option == 1){
+				User newUser = userCreate();
+				userList.add(newUser);
+				main(args);
+			}
+			else if(option == 2){
+				projectList = projectsMenu(projectList);
+				if(projectList.get(0).getUsers().size() > 0)
+				projectList.get(0).getUsers().get(0).getName();
+				main(args);
+			}
+			else if(option == 3){
+				Publication newPublication = createPublication();
+				main(args);
+			}
+			else if(option == 4){
+				consultation(projectList, userList, utility);
+				main(args);
+			}
+			else if(option == 5)
+				System.exit(0);
+			else{
+				System.out.println("Insira uma opção válida");
+				main(null);
+			}
 		}
-		else if(option == 2){
-			projectList = projectsMenu(projectList);
-			if(projectList.get(0).getUsers().size() > 0)
-			projectList.get(0).getUsers().get(0).getName();
-			main(args);
+		catch(InputMismatchException e){
+			System.out.println("Insira uma entrada válida");
+			main(null);
 		}
-		else if(option == 3){
-			Publication newPublication = createPublication();
-			main(args);
-		}
-		else if(option == 4){
-			consultation(projectList, userList, utility);
-			main(args);
-		}
-		else if(option == 5)
-			System.exit(0);
-		
 		
 	}
 	
-	public static User userCreate(){
+	public static User userCreate() throws InputMismatchException, NumberFormatException{
 		System.out.println("--- Sistema de Gestao de Produtividade Academica ---");
 		System.out.println("Escolha o tipo de usuario");
 		System.out.println("1. Professor");
@@ -69,7 +80,7 @@ public class Main {
 		
 		return newUser;
 	}
-	public static Professor createProfessor(){
+	public static Professor createProfessor() throws InputMismatchException, NumberFormatException{
 		Professor newProfessor = new Professor(null, null);
 		System.out.println("--- Sistema de Gestao de Produtividade Academica ---");
 		System.out.println("Nome:");
@@ -82,7 +93,7 @@ public class Main {
 		userList.add(newProfessor);
 		return newProfessor;
 	}
-	public static Student createStudent(){
+	public static Student createStudent() throws InputMismatchException, NumberFormatException{
 		Student newUser = new Student(null, null, null);
 		System.out.println("--- Sistema de Gestao de Produtividade Academica ---");
 		System.out.println("Escolha o tipo de estudante");
@@ -112,7 +123,7 @@ public class Main {
 		return newUser;
 		
 	}
-	public static Student createStudentGeneral(Student newUser){
+	public static Student createStudentGeneral(Student newUser) throws InputMismatchException, NumberFormatException{
 		System.out.println("--- Sistema de Gestao de Produtividade Academica ---");
 		System.out.println("Nome:");
 		Scanner sc = new Scanner(System.in);
@@ -125,7 +136,7 @@ public class Main {
 		return newUser;
 		
 	}
-	public static ArrayList<Project> projectsMenu(ArrayList<Project> projectList){
+	public static ArrayList<Project> projectsMenu(ArrayList<Project> projectList) throws InputMismatchException, NumberFormatException{
 		System.out.println("--- Sistema de Gestao de Produtividade Academica ---");
 		System.out.println("Escolha uma opcao:");
 		System.out.println("1. Criar projeto");
@@ -155,12 +166,12 @@ public class Main {
 			String projectName = sc.nextLine();
 			System.out.println("Insira o titulo da publicacao");
 			String publicationName = sc.nextLine();
-			//projectList = addPublicationToProject(projectList, publicationName, projectName);
+			projectList = addPublicationToProject(projectList, publicationName, projectName);
 		}
 		
 		return projectList;
 	}
-	public static Publication createPublication(){
+	public static Publication createPublication() throws InputMismatchException, NumberFormatException{
 		ArrayList<User> authorsList = new ArrayList<User>();
 		System.out.println("--- Sistema de Gestao de Produtividade Academica ---");
 		System.out.println("Criacao de Publicacao");
@@ -175,7 +186,7 @@ public class Main {
 		
 		return newPublication;
 	}
-	public static void consultation(ArrayList<Project> projectList, ArrayList<User> userList, Utilities utility){
+	public static void consultation(ArrayList<Project> projectList, ArrayList<User> userList, Utilities utility) throws InputMismatchException, NumberFormatException{
 		System.out.println("--- Sistema de Gestao de Produtividade Academica ---");
 		System.out.println("Escolha uma opcao:");
 		System.out.println("1. Consulta por colaborador");
@@ -189,7 +200,7 @@ public class Main {
 			projects(projectList, utility);
 		
 	}
-	public static Project createProject(){
+	public static Project createProject() throws InputMismatchException, NumberFormatException{
 		Project newProject = new Project(null, null, null, null, 0.0, null, null, false, null);
 		System.out.println("--- Sistema de Gestao de Produtividade Academica ---");
 		System.out.println("Titulo:");
@@ -223,7 +234,6 @@ public class Main {
 	}
 	public static ArrayList<Project> addUserToProject(ArrayList<Project> projectList, ArrayList<User> userList, String projectName, String userName){
 		for(int i = 0; i < userList.size(); i++){
-			System.out.println(userList.get(i).getName());
 			if(userList.get(i).getName().equalsIgnoreCase(userName)){
 				for(int j = 0; j < projectList.size(); j++){
 					if(projectList.get(j).getTitle().equalsIgnoreCase(projectName)){
@@ -235,19 +245,28 @@ public class Main {
 		}
 		return projectList;
 	}
-	/*public static ArrayList<Project> addPublicationToProject(ArrayList<Project> projectList, String publicationTitle, String projectName){
-		
+	public static ArrayList<Project> addPublicationToProject(ArrayList<Project> projectList, String publicationTitle, String projectName){
+		for(int i = 0; i < publicationList.size(); i++){
+			if(publicationList.get(i).getTitle().equalsIgnoreCase(publicationTitle)){
+				for(int j = 0; j < projectList.size(); j++){
+					if(projectList.get(j).getTitle().equalsIgnoreCase(projectName)){
+						projectList.get(j).setPublications(publicationList.get(i));
+						return projectList;
+					}
+				}
+			}
+		}
 		return projectList;
 		
-	}*/
-	public static void contributors(ArrayList<User> userList, Utilities utility){
+	}
+	public static void contributors(ArrayList<User> userList, Utilities utility) throws InputMismatchException, NumberFormatException{
 		System.out.println("--- Sistema de Gestao de Produtividade Academica ---");
 		System.out.println("Digite o nome do colaborador:");
 		Scanner sc = new Scanner(System.in);
 		String collaboratorName = sc.nextLine();
 		utility.consultCollaborator(userList, collaboratorName);
 	}
-	public static void projects(ArrayList<Project> projectList, Utilities utility){
+	public static void projects(ArrayList<Project> projectList, Utilities utility) throws InputMismatchException, NumberFormatException{
 		System.out.println("--- Sistema de Gestao de Produtividade Academica ---");
 		System.out.println("Digite o titulo do projeto:");
 		Scanner sc = new Scanner(System.in);
